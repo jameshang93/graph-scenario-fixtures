@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/calendars",
+  "value": [
+    {
+      "id": "AAMkAGI2TG93AAA=",
+      "name": "Calendar",
+      "color": "auto",
+      "changeKey": "abc123",
+      "canShare": true,
+      "canViewPrivateItems": true,
+      "canEdit": true,
+      "owner": {
+        "name": "Demo User",
+        "address": "demo@contoso.com"
+      }
+    }
+  ]
+}
