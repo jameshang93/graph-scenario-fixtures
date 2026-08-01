@@ -1,0 +1,18 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Collection(event)",
+  "@odata.deltaLink": "https://graph.microsoft.com/v1.0/me/calendarView/delta?$deltatoken=abc123",
+  "value": [
+    {
+      "id": "evt-1",
+      "subject": "Standup",
+      "start": { "dateTime": "2026-08-01T09:00:00.0000000", "timeZone": "UTC" },
+      "end": { "dateTime": "2026-08-01T09:15:00.0000000", "timeZone": "UTC" },
+      "@removed": null
+    },
+    {
+      "id": "evt-old",
+      "subject": "Cancelled sync",
+      "@removed": { "reason": "deleted" }
+    }
+  ]
+}
