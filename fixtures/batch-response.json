@@ -1,0 +1,16 @@
+{
+  "responses": [
+    {
+      "id": "1",
+      "status": 200,
+      "headers": { "Content-Type": "application/json" },
+      "body": { "id": "AAMkAGI2MSG01", "subject": "Project update" }
+    },
+    {
+      "id": "2",
+      "status": 429,
+      "headers": { "Retry-After": "2" },
+      "body": { "error": { "code": "TooManyRequests", "message": "Rate limit is exceeded." } }
+    }
+  ]
+}
