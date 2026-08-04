@@ -15,6 +15,7 @@ npm run validate
 - `fixtures/delta-calendar.json` — delta sync with `@removed`
 - `fixtures/graph-error-429.json` — Graph TooManyRequests error body
 - `fixtures/batch-response.json` — `$batch` mixed success + 429
+- `fixtures/change-notification.json` — Graph webhook change notification
 
 ## CI
 

@@ -1,0 +1,17 @@
+{
+  "value": [
+    {
+      "subscriptionId": "sub-123",
+      "clientState": "secret-state",
+      "changeType": "updated",
+      "resource": "users/user-id/messages/AAMkAGI2MSG01",
+      "resourceData": {
+        "@odata.type": "#Microsoft.Graph.Message",
+        "@odata.id": "Users/user-id/Messages/AAMkAGI2MSG01",
+        "id": "AAMkAGI2MSG01"
+      },
+      "subscriptionExpirationDateTime": "2026-08-04T12:00:00.0000000Z",
+      "tenantId": "tenant-guid"
+    }
+  ]
+}

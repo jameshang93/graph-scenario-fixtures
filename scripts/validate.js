@@ -10,6 +10,7 @@ const mail = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "mail-page.j
 const delta = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "delta-calendar.json"), "utf8"));
 const err429 = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "graph-error-429.json"), "utf8"));
 const batch = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "batch-response.json"), "utf8"));
+const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "change-notification.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -37,5 +38,9 @@ requireFields(batch, ["responses"], "batch-response");
 if (!Array.isArray(batch.responses) || batch.responses.length < 2) throw new Error("batch-response.responses must include at least two items");
 for (const item of batch.responses) requireFields(item, ["id", "status", "body"], `batch-response.responses[${item.id}]`);
 if (!batch.responses.find((item) => item.status === 429)) throw new Error("batch-response should include a 429 response for retry tests");
+
+requireFields(notification, ["value"], "change-notification");
+if (!Array.isArray(notification.value) || notification.value.length < 1) throw new Error("change-notification.value must be a non-empty array");
+requireFields(notification.value[0], ["subscriptionId", "changeType", "resource", "clientState"], "change-notification.value[0]");
 
 console.log("ok: fixtures look valid");
