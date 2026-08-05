@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "validate": "node scripts/validate.js"
+    "validate": "node scripts/validate.js",
+    "test": "npm run validate"
   }
 }
