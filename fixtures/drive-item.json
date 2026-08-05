@@ -1,0 +1,33 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/drive/root/children/$entity",
+  "id": "01ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+  "name": "QuarterlyReport.docx",
+  "size": 284672,
+  "createdDateTime": "2024-01-10T08:30:00Z",
+  "lastModifiedDateTime": "2024-01-15T14:22:00Z",
+  "webUrl": "https://contoso-my.sharepoint.com/personal/demo/Documents/QuarterlyReport.docx",
+  "file": {
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "hashes": {
+      "quickXorHash": "abc123def456=="
+    }
+  },
+  "parentReference": {
+    "driveId": "b!abc123",
+    "driveType": "business",
+    "id": "root",
+    "path": "/drive/root:"
+  },
+  "createdBy": {
+    "user": {
+      "displayName": "Demo User",
+      "email": "demo@contoso.com"
+    }
+  },
+  "lastModifiedBy": {
+    "user": {
+      "displayName": "Demo User",
+      "email": "demo@contoso.com"
+    }
+  }
+}
