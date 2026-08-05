@@ -11,6 +11,7 @@ const delta = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "delta-cale
 const err429 = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "graph-error-429.json"), "utf8"));
 const batch = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "batch-response.json"), "utf8"));
 const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "change-notification.json"), "utf8"));
+const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-item.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -42,5 +43,10 @@ if (!batch.responses.find((item) => item.status === 429)) throw new Error("batch
 requireFields(notification, ["value"], "change-notification");
 if (!Array.isArray(notification.value) || notification.value.length < 1) throw new Error("change-notification.value must be a non-empty array");
 requireFields(notification.value[0], ["subscriptionId", "changeType", "resource", "clientState"], "change-notification.value[0]");
+
+requireFields(driveItem, ["id", "name", "size"], "drive-item");
+if (!driveItem.file || typeof driveItem.file.mimeType !== "string") {
+  throw new Error("drive-item.file.mimeType must be a string");
+}
 
 console.log("ok: fixtures look valid");
