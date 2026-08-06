@@ -1,0 +1,38 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#chats('19:meeting_abc@thread.v2')/messages",
+  "value": [
+    {
+      "id": "1698391255115",
+      "replyToId": null,
+      "etag": "1698391255115",
+      "messageType": "message",
+      "createdDateTime": "2024-01-15T09:30:00Z",
+      "lastModifiedDateTime": "2024-01-15T09:30:00Z",
+      "deletedDateTime": null,
+      "subject": null,
+      "summary": null,
+      "chatId": "19:meeting_abc@thread.v2",
+      "importance": "normal",
+      "locale": "en-us",
+      "webUrl": null,
+      "from": {
+        "application": null,
+        "device": null,
+        "user": {
+          "@odata.type": "#microsoft.graph.teamworkUserIdentity",
+          "id": "8d8a6e7e-3b4a-4c5d-9e0f-1a2b3c4d5e6f",
+          "displayName": "Alex",
+          "userIdentityType": "aadUser"
+        }
+      },
+      "body": {
+        "contentType": "html",
+        "content": "<p>Can we sync on the rollout plan before standup?</p>"
+      },
+      "channelIdentity": null,
+      "attachments": [],
+      "mentions": [],
+      "reactions": []
+    }
+  ]
+}

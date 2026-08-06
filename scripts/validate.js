@@ -12,6 +12,7 @@ const err429 = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "graph-err
 const batch = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "batch-response.json"), "utf8"));
 const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "change-notification.json"), "utf8"));
 const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-item.json"), "utf8"));
+const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-chat-message.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -64,5 +65,16 @@ requireFields(driveItem, ["id", "name", "size"], "drive-item");
 if (!driveItem.file || typeof driveItem.file.mimeType !== "string") {
   throw new Error("drive-item.file.mimeType must be a string");
 }
+
+requireODataContext(teamsChat, "teams-chat-message");
+requireFields(teamsChat, ["value"], "teams-chat-message");
+if (!Array.isArray(teamsChat.value) || teamsChat.value.length < 1) {
+  throw new Error("teams-chat-message.value must be a non-empty array");
+}
+requireFields(teamsChat.value[0], ["id", "chatId", "messageType", "body"], "teams-chat-message.value[0]");
+requireFields(teamsChat.value[0].body, ["contentType", "content"], "teams-chat-message.value[0].body");
+requireFields(teamsChat.value[0], ["from"], "teams-chat-message.value[0]");
+requireFields(teamsChat.value[0].from, ["user"], "teams-chat-message.value[0].from");
+requireFields(teamsChat.value[0].from.user, ["displayName", "userIdentityType"], "teams-chat-message.value[0].from.user");
 
 console.log("ok: fixtures look valid");
