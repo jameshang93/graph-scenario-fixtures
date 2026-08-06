@@ -12,6 +12,7 @@ const err429 = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "graph-err
 const batch = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "batch-response.json"), "utf8"));
 const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "change-notification.json"), "utf8"));
 const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-item.json"), "utf8"));
+const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-chat-message.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -63,6 +64,64 @@ requireODataContext(driveItem, "drive-item");
 requireFields(driveItem, ["id", "name", "size"], "drive-item");
 if (!driveItem.file || typeof driveItem.file.mimeType !== "string") {
   throw new Error("drive-item.file.mimeType must be a string");
+}
+
+requireODataContext(teamsChat, "teams-chat-message");
+requireFields(teamsChat, ["value"], "teams-chat-message");
+if (!Array.isArray(teamsChat.value) || teamsChat.value.length < 1) {
+  throw new Error("teams-chat-message.value must be a non-empty array");
+}
+requireFields(teamsChat.value[0], ["id", "chatId", "messageType", "body"], "teams-chat-message.value[0]");
+requireFields(teamsChat.value[0].body, ["contentType", "content"], "teams-chat-message.value[0].body");
+requireFields(teamsChat.value[0], ["from"], "teams-chat-message.value[0]");
+requireFields(teamsChat.value[0].from, ["user"], "teams-chat-message.value[0].from");
+requireFields(teamsChat.value[0].from.user, ["displayName", "userIdentityType"], "teams-chat-message.value[0].from.user");
+
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "manifest.json"), "utf8"));
+const fixturesDir = path.join(root, "fixtures");
+
+requireFields(manifest, ["fixtures"], "manifest");
+if (!Array.isArray(manifest.fixtures) || manifest.fixtures.length < 1) {
+  throw new Error("manifest.fixtures must be a non-empty array");
+}
+
+const manifestFiles = new Set();
+for (const entry of manifest.fixtures) {
+  requireFields(entry, ["file", "tags"], "manifest.fixtures[]");
+  if (typeof entry.file !== "string" || entry.file.length < 1) {
+    throw new Error("manifest.fixtures[].file must be a non-empty string");
+  }
+  if (entry.file === "manifest.json") {
+    throw new Error("manifest must not list manifest.json");
+  }
+  if (!Array.isArray(entry.tags) || entry.tags.length < 1) {
+    throw new Error(`manifest entry ${entry.file} must include at least one tag`);
+  }
+  for (const tag of entry.tags) {
+    if (typeof tag !== "string" || tag.length < 1) {
+      throw new Error(`manifest entry ${entry.file} has an invalid tag`);
+    }
+  }
+  if (manifestFiles.has(entry.file)) {
+    throw new Error(`manifest lists duplicate file: ${entry.file}`);
+  }
+  manifestFiles.add(entry.file);
+  const fixturePath = path.join(fixturesDir, entry.file);
+  if (!fs.existsSync(fixturePath)) {
+    throw new Error(`manifest references missing fixture: ${entry.file}`);
+  }
+}
+
+const fixtureFiles = fs.readdirSync(fixturesDir)
+  .filter((name) => name.endsWith(".json") && name !== "manifest.json")
+  .sort();
+for (const file of fixtureFiles) {
+  if (!manifestFiles.has(file)) {
+    throw new Error(`fixture file is not listed in manifest: ${file}`);
+  }
+}
+if (manifestFiles.size !== fixtureFiles.length) {
+  throw new Error("manifest fixture count does not match fixtures directory");
 }
 
 console.log("ok: fixtures look valid");

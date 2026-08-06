@@ -1,0 +1,36 @@
+{
+  "fixtures": [
+    {
+      "file": "calendar-list.json",
+      "tags": ["calendar"]
+    },
+    {
+      "file": "mail-page.json",
+      "tags": ["mail"]
+    },
+    {
+      "file": "delta-calendar.json",
+      "tags": ["calendar"]
+    },
+    {
+      "file": "drive-item.json",
+      "tags": ["drive"]
+    },
+    {
+      "file": "teams-chat-message.json",
+      "tags": ["teams"]
+    },
+    {
+      "file": "graph-error-429.json",
+      "tags": ["error"]
+    },
+    {
+      "file": "batch-response.json",
+      "tags": ["error"]
+    },
+    {
+      "file": "change-notification.json",
+      "tags": ["webhook"]
+    }
+  ]
+}
