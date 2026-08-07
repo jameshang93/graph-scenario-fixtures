@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "validate": "node scripts/validate.js",
-    "test": "npm run validate"
+    "test": "npm run validate && node scripts/fixture-fetch.js --selftest"
   }
 }

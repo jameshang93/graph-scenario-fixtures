@@ -1,6 +1,6 @@
 # graph-scenario-fixtures
 
-Minimal Microsoft Graph API response fixtures for calendar, mail, delta sync, batch, and throttle errors.
+Minimal Microsoft Graph API response fixtures for calendar, mail, delta sync, batch and throttle errors.
 
 ## Validate
 
@@ -8,8 +8,13 @@ Minimal Microsoft Graph API response fixtures for calendar, mail, delta sync, ba
 npm run validate
 ```
 
+## Fixture playback
+
+Load a fixture as a deterministic HTTP-style response: `node scripts/fixture-fetch.js user-profile`
+
 ## Fixtures
 
+- `fixtures/user-profile.json` — signed-in user profile from `/me`
 - `fixtures/calendar-list.json` — calendar list page
 - `fixtures/mail-page.json` — mail page with `@odata.nextLink`
 - `fixtures/delta-calendar.json` — delta sync with `@removed`
