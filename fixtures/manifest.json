@@ -1,6 +1,10 @@
 {
   "fixtures": [
     {
+      "file": "user-profile.json",
+      "tags": ["user", "profile"]
+    },
+    {
       "file": "calendar-list.json",
       "tags": ["calendar"]
     },

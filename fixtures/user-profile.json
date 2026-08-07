@@ -1,0 +1,17 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+  "id": "8d8a6e7e-3b4a-4c5d-9e0f-1a2b3c4d5e6f",
+  "businessPhones": ["+1 425 555 0100"],
+  "displayName": "Alex Morgan",
+  "givenName": "Alex",
+  "jobTitle": "Product Manager",
+  "mail": "alex.morgan@contoso.com",
+  "mobilePhone": "+1 425 555 0101",
+  "officeLocation": "Building 18 / 2W100",
+  "preferredLanguage": "en-US",
+  "surname": "Morgan",
+  "userPrincipalName": "alex.morgan@contoso.com",
+  "mailNickname": "alex.morgan",
+  "accountEnabled": true,
+  "createdDateTime": "2023-06-01T10:00:00Z"
+}
