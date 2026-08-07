@@ -3,6 +3,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { checkSchema, loadSchema } = require("./schema-check");
 
 const root = path.join(__dirname, "..");
 const calendar = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "calendar-list.json"), "utf8"));
@@ -132,6 +133,16 @@ for (const file of fixtureFiles) {
 }
 if (manifestFiles.size !== fixtureFiles.length) {
   throw new Error("manifest fixture count does not match fixtures directory");
+}
+
+const schemaChecks = [
+  ["drive-item", driveItem],
+  ["teams-chat-message", teamsChat],
+  ["user-profile", userProfile]
+];
+for (const [name, fixture] of schemaChecks) {
+  const schema = loadSchema(root, name);
+  checkSchema(fixture, schema, name);
 }
 
 console.log("ok: fixtures look valid");

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "user-profile",
+  "type": "object",
+  "required": ["@odata.context", "id", "displayName", "mail", "userPrincipalName"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "displayName": { "type": "string" },
+    "mail": { "type": "string" },
+    "userPrincipalName": { "type": "string" }
+  }
+}
