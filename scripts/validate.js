@@ -3,6 +3,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { checkSchema, loadSchema } = require("./schema-check");
 
 const root = path.join(__dirname, "..");
 const calendar = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "calendar-list.json"), "utf8"));
@@ -13,6 +14,7 @@ const batch = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "batch-resp
 const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "change-notification.json"), "utf8"));
 const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-item.json"), "utf8"));
 const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-chat-message.json"), "utf8"));
+const userProfile = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "user-profile.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -25,6 +27,15 @@ function requireODataContext(obj, label) {
   if (typeof obj["@odata.context"] !== "string" || !obj["@odata.context"].startsWith("https://graph.microsoft.com/")) {
     throw new Error(`${label}.@odata.context must be a Graph metadata URL`);
   }
+}
+
+requireODataContext(userProfile, "user-profile");
+requireFields(userProfile, ["id", "displayName", "mail", "userPrincipalName"], "user-profile");
+if (typeof userProfile.id !== "string" || userProfile.id.length < 1) {
+  throw new Error("user-profile.id must be a non-empty string");
+}
+if (typeof userProfile.mail !== "string" || !userProfile.mail.includes("@")) {
+  throw new Error("user-profile.mail must look like an email address");
 }
 
 requireODataContext(calendar, "calendar-list");
@@ -122,6 +133,16 @@ for (const file of fixtureFiles) {
 }
 if (manifestFiles.size !== fixtureFiles.length) {
   throw new Error("manifest fixture count does not match fixtures directory");
+}
+
+const schemaChecks = [
+  ["drive-item", driveItem],
+  ["teams-chat-message", teamsChat],
+  ["user-profile", userProfile]
+];
+for (const [name, fixture] of schemaChecks) {
+  const schema = loadSchema(root, name);
+  checkSchema(fixture, schema, name);
 }
 
 console.log("ok: fixtures look valid");

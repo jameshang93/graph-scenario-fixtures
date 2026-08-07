@@ -13,4 +13,4 @@ jobs:
         with:
           node-version: "20"
       - name: Validate fixtures
-        run: npm run validate
+        run: npm test

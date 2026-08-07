@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "drive-item",
+  "type": "object",
+  "required": ["@odata.context", "id", "name", "size", "file"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "size": { "type": "number" },
+    "file": {
+      "type": "object",
+      "required": ["mimeType"],
+      "properties": {
+        "mimeType": { "type": "string" }
+      }
+    }
+  }
+}
