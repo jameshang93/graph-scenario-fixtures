@@ -1,0 +1,70 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/todo/lists('AAMkAGI2TDk1AAA=')/tasks",
+  "value": [
+    {
+      "id": "AAMkAGI2TDk1AAABBBCCCDDD111=",
+      "title": "Review Q1 budget spreadsheet",
+      "status": "notStarted",
+      "importance": "high",
+      "createdDateTime": "2024-01-08T09:15:00Z",
+      "lastModifiedDateTime": "2024-01-14T16:42:00Z",
+      "dueDateTime": {
+        "dateTime": "2024-01-20T17:00:00",
+        "timeZone": "Pacific Standard Time"
+      },
+      "startDateTime": {
+        "dateTime": "2024-01-15T08:00:00",
+        "timeZone": "Pacific Standard Time"
+      },
+      "body": {
+        "contentType": "text",
+        "content": "Check variance against forecast and flag items over 10%."
+      },
+      "categories": ["Finance"],
+      "hasAttachments": false,
+      "isReminderOn": true,
+      "reminderDateTime": {
+        "dateTime": "2024-01-20T09:00:00",
+        "timeZone": "Pacific Standard Time"
+      }
+    },
+    {
+      "id": "AAMkAGI2TDk1AAABBBCCCDDD222=",
+      "title": "Send onboarding checklist to new hire",
+      "status": "inProgress",
+      "importance": "normal",
+      "createdDateTime": "2024-01-10T11:30:00Z",
+      "lastModifiedDateTime": "2024-01-15T10:05:00Z",
+      "dueDateTime": {
+        "dateTime": "2024-01-16T12:00:00",
+        "timeZone": "Pacific Standard Time"
+      },
+      "body": {
+        "contentType": "text",
+        "content": "Include IT setup, badge request and first-week meetings."
+      },
+      "categories": ["HR"],
+      "hasAttachments": true,
+      "isReminderOn": false
+    },
+    {
+      "id": "AAMkAGI2TDk1AAABBBCCCDDD333=",
+      "title": "Archive completed project notes",
+      "status": "completed",
+      "importance": "low",
+      "createdDateTime": "2023-12-20T14:00:00Z",
+      "lastModifiedDateTime": "2024-01-12T18:20:00Z",
+      "completedDateTime": {
+        "dateTime": "2024-01-12T18:20:00",
+        "timeZone": "Pacific Standard Time"
+      },
+      "body": {
+        "contentType": "text",
+        "content": "Move final docs to shared drive and close the tracker."
+      },
+      "categories": ["Admin"],
+      "hasAttachments": false,
+      "isReminderOn": false
+    }
+  ]
+}

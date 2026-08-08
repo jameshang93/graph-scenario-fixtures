@@ -12,6 +12,10 @@ npm run validate
 
 Load a fixture as a deterministic HTTP-style response: `node scripts/fixture-fetch.js user-profile`
 
+## Scenario packs
+
+Named playback sequences live in `fixtures/scenarios/index.json`. Each pack lists fixture names in call order (for example `mail-sync`, `calendar-delta`, `teams-chat`, `drive-get`). Run `npm test` to verify every referenced fixture exists.
+
 ## Fixtures
 
 - `fixtures/user-profile.json` — signed-in user profile from `/me`
@@ -21,6 +25,7 @@ Load a fixture as a deterministic HTTP-style response: `node scripts/fixture-fet
 - `fixtures/graph-error-429.json` — Graph TooManyRequests error body
 - `fixtures/batch-response.json` — `$batch` mixed success + 429
 - `fixtures/change-notification.json` — Graph webhook change notification
+- `fixtures/todo-task-list.json` — To Do task list with mixed statuses
 
 ## CI
 

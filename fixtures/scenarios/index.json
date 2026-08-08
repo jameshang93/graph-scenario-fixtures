@@ -1,0 +1,20 @@
+{
+  "mail-sync": [
+    "user-profile",
+    "mail-page",
+    "graph-error-429"
+  ],
+  "calendar-delta": [
+    "user-profile",
+    "calendar-list",
+    "delta-calendar"
+  ],
+  "teams-chat": [
+    "user-profile",
+    "teams-chat-message"
+  ],
+  "drive-get": [
+    "user-profile",
+    "drive-item"
+  ]
+}

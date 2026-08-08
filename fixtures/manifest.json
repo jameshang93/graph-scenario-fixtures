@@ -35,6 +35,10 @@
     {
       "file": "change-notification.json",
       "tags": ["webhook"]
+    },
+    {
+      "file": "todo-task-list.json",
+      "tags": ["todo", "tasks"]
     }
   ]
 }
