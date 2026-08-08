@@ -151,6 +151,42 @@ if (manifestFiles.size !== fixtureFiles.length) {
   throw new Error("manifest fixture count does not match fixtures directory");
 }
 
+const scenariosPath = path.join(fixturesDir, "scenarios", "index.json");
+if (!fs.existsSync(scenariosPath)) {
+  throw new Error("missing scenario pack index: fixtures/scenarios/index.json");
+}
+const scenarioIndex = JSON.parse(fs.readFileSync(scenariosPath, "utf8"));
+if (typeof scenarioIndex !== "object" || scenarioIndex === null || Array.isArray(scenarioIndex)) {
+  throw new Error("scenarios/index.json must be an object of named scenario packs");
+}
+
+function resolveFixtureFile(name) {
+  const base = name.endsWith(".json") ? name : `${name}.json`;
+  return base;
+}
+
+for (const [packName, fixtureNames] of Object.entries(scenarioIndex)) {
+  if (typeof packName !== "string" || packName.length < 1) {
+    throw new Error("scenario pack name must be a non-empty string");
+  }
+  if (!Array.isArray(fixtureNames) || fixtureNames.length < 1) {
+    throw new Error(`scenario pack ${packName} must list at least one fixture`);
+  }
+  for (const fixtureName of fixtureNames) {
+    if (typeof fixtureName !== "string" || fixtureName.length < 1) {
+      throw new Error(`scenario pack ${packName} has an invalid fixture name`);
+    }
+    const file = resolveFixtureFile(fixtureName);
+    if (!manifestFiles.has(file)) {
+      throw new Error(`scenario pack ${packName} references unknown fixture: ${fixtureName}`);
+    }
+    const fixturePath = path.join(fixturesDir, file);
+    if (!fs.existsSync(fixturePath)) {
+      throw new Error(`scenario pack ${packName} references missing fixture file: ${file}`);
+    }
+  }
+}
+
 const schemaChecks = [
   ["drive-item", driveItem],
   ["teams-chat-message", teamsChat],
