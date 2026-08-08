@@ -15,6 +15,7 @@ const notification = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "cha
 const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-item.json"), "utf8"));
 const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-chat-message.json"), "utf8"));
 const userProfile = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "user-profile.json"), "utf8"));
+const todoTaskList = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "todo-task-list.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -87,6 +88,21 @@ requireFields(teamsChat.value[0].body, ["contentType", "content"], "teams-chat-m
 requireFields(teamsChat.value[0], ["from"], "teams-chat-message.value[0]");
 requireFields(teamsChat.value[0].from, ["user"], "teams-chat-message.value[0].from");
 requireFields(teamsChat.value[0].from.user, ["displayName", "userIdentityType"], "teams-chat-message.value[0].from.user");
+
+requireODataContext(todoTaskList, "todo-task-list");
+requireFields(todoTaskList, ["value"], "todo-task-list");
+if (!Array.isArray(todoTaskList.value) || todoTaskList.value.length < 1) {
+  throw new Error("todo-task-list.value must be a non-empty array");
+}
+requireFields(todoTaskList.value[0], ["id", "title", "status", "importance"], "todo-task-list.value[0]");
+const validStatuses = new Set(["notStarted", "inProgress", "completed", "waitingOnOthers", "deferred"]);
+for (const [index, task] of todoTaskList.value.entries()) {
+  if (!validStatuses.has(task.status)) {
+    throw new Error(`todo-task-list.value[${index}].status must be a valid todoTask status`);
+  }
+  requireFields(task, ["body"], `todo-task-list.value[${index}]`);
+  requireFields(task.body, ["contentType", "content"], `todo-task-list.value[${index}].body`);
+}
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "manifest.json"), "utf8"));
 const fixturesDir = path.join(root, "fixtures");
