@@ -1,0 +1,22 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/contacts/$entity",
+  "id": "AAMkAGI2TDk1AAAContact001=",
+  "displayName": "Jordan Lee",
+  "givenName": "Jordan",
+  "surname": "Lee",
+  "emailAddresses": [
+    {
+      "name": "Jordan Lee",
+      "address": "jordan.lee@fabrikam.com"
+    }
+  ],
+  "businessPhones": ["+1 206 555 0142"],
+  "mobilePhone": "+1 206 555 0198",
+  "companyName": "Fabrikam, Inc.",
+  "jobTitle": "Account Executive",
+  "department": "Sales",
+  "officeLocation": "Seattle / 4N210",
+  "birthday": "1990-03-15T00:00:00Z",
+  "createdDateTime": "2023-09-12T14:22:00Z",
+  "lastModifiedDateTime": "2024-01-10T09:05:00Z"
+}

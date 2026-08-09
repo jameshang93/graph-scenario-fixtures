@@ -16,6 +16,7 @@ const driveItem = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "drive-
 const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-chat-message.json"), "utf8"));
 const userProfile = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "user-profile.json"), "utf8"));
 const todoTaskList = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "todo-task-list.json"), "utf8"));
+const contact = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "contact.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -37,6 +38,16 @@ if (typeof userProfile.id !== "string" || userProfile.id.length < 1) {
 }
 if (typeof userProfile.mail !== "string" || !userProfile.mail.includes("@")) {
   throw new Error("user-profile.mail must look like an email address");
+}
+
+requireODataContext(contact, "contact");
+requireFields(contact, ["id", "displayName", "emailAddresses", "givenName", "surname"], "contact");
+if (!Array.isArray(contact.emailAddresses) || contact.emailAddresses.length < 1) {
+  throw new Error("contact.emailAddresses must be a non-empty array");
+}
+requireFields(contact.emailAddresses[0], ["address"], "contact.emailAddresses[0]");
+if (typeof contact.emailAddresses[0].address !== "string" || !contact.emailAddresses[0].address.includes("@")) {
+  throw new Error("contact.emailAddresses[0].address must look like an email address");
 }
 
 requireODataContext(calendar, "calendar-list");

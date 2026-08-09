@@ -2,43 +2,71 @@
   "fixtures": [
     {
       "file": "user-profile.json",
-      "tags": ["user", "profile"]
+      "tags": [
+        "user",
+        "profile"
+      ]
     },
     {
       "file": "calendar-list.json",
-      "tags": ["calendar"]
+      "tags": [
+        "calendar"
+      ]
     },
     {
       "file": "mail-page.json",
-      "tags": ["mail"]
+      "tags": [
+        "mail"
+      ]
     },
     {
       "file": "delta-calendar.json",
-      "tags": ["calendar"]
+      "tags": [
+        "calendar"
+      ]
     },
     {
       "file": "drive-item.json",
-      "tags": ["drive"]
+      "tags": [
+        "drive"
+      ]
     },
     {
       "file": "teams-chat-message.json",
-      "tags": ["teams"]
+      "tags": [
+        "teams"
+      ]
     },
     {
       "file": "graph-error-429.json",
-      "tags": ["error"]
+      "tags": [
+        "error"
+      ]
     },
     {
       "file": "batch-response.json",
-      "tags": ["error"]
+      "tags": [
+        "error"
+      ]
     },
     {
       "file": "change-notification.json",
-      "tags": ["webhook"]
+      "tags": [
+        "webhook"
+      ]
     },
     {
       "file": "todo-task-list.json",
-      "tags": ["todo", "tasks"]
+      "tags": [
+        "todo",
+        "tasks"
+      ]
+    },
+    {
+      "file": "contact.json",
+      "tags": [
+        "contacts"
+      ]
     }
   ]
 }
