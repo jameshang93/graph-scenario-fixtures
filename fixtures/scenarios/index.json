@@ -16,5 +16,9 @@
   "drive-get": [
     "user-profile",
     "drive-item"
+  ],
+  "todo-sync": [
+    "user-profile",
+    "todo-task-list"
   ]
 }

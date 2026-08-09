@@ -201,7 +201,8 @@ for (const [packName, fixtureNames] of Object.entries(scenarioIndex)) {
 const schemaChecks = [
   ["drive-item", driveItem],
   ["teams-chat-message", teamsChat],
-  ["user-profile", userProfile]
+  ["user-profile", userProfile],
+  ["todo-task-list", todoTaskList]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);

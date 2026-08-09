@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "todo-task-list",
+  "type": "object",
+  "required": ["@odata.context", "value"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "value": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "importance", "body"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": { "type": "string" },
+          "importance": { "type": "string" },
+          "body": {
+            "type": "object",
+            "required": ["contentType", "content"],
+            "properties": {
+              "contentType": { "type": "string" },
+              "content": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
