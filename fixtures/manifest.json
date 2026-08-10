@@ -67,6 +67,13 @@
       "tags": [
         "contacts"
       ]
+    },
+    {
+      "file": "planner-task.json",
+      "tags": [
+        "planner",
+        "tasks"
+      ]
     }
   ]
 }
