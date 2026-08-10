@@ -218,7 +218,8 @@ const schemaChecks = [
   ["drive-item", driveItem],
   ["teams-chat-message", teamsChat],
   ["user-profile", userProfile],
-  ["todo-task-list", todoTaskList]
+  ["todo-task-list", todoTaskList],
+  ["mail-page", mail]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
