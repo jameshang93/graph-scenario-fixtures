@@ -1,0 +1,16 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#planner/tasks/$entity",
+  "id": "oM5QTNrFEk6JsRbgJk8bImUADqYq",
+  "planId": "xqQg5FS2LkCpvmzEQoCDIGUAMifb",
+  "bucketId": "hsOf2dkXJk2TwqQxGRTb2GUAJtOd",
+  "title": "Draft rollout checklist for Planner sync",
+  "percentComplete": 40,
+  "priority": 5,
+  "createdDateTime": "2024-01-10T09:00:00Z",
+  "dueDateTime": "2024-01-22T17:00:00Z",
+  "hasDescription": true,
+  "completedDateTime": null,
+  "conversationThreadId": null,
+  "assigneePriority": "",
+  "orderHint": "8586669064975529810P}"
+}

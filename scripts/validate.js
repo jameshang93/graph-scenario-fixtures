@@ -17,6 +17,7 @@ const teamsChat = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "teams-
 const userProfile = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "user-profile.json"), "utf8"));
 const todoTaskList = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "todo-task-list.json"), "utf8"));
 const contact = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "contact.json"), "utf8"));
+const plannerTask = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "planner-task.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -48,6 +49,21 @@ if (!Array.isArray(contact.emailAddresses) || contact.emailAddresses.length < 1)
 requireFields(contact.emailAddresses[0], ["address"], "contact.emailAddresses[0]");
 if (typeof contact.emailAddresses[0].address !== "string" || !contact.emailAddresses[0].address.includes("@")) {
   throw new Error("contact.emailAddresses[0].address must look like an email address");
+}
+
+requireODataContext(plannerTask, "planner-task");
+requireFields(plannerTask, ["id", "title", "percentComplete", "planId"], "planner-task");
+if (typeof plannerTask.id !== "string" || plannerTask.id.length < 1) {
+  throw new Error("planner-task.id must be a non-empty string");
+}
+if (typeof plannerTask.title !== "string" || plannerTask.title.length < 1) {
+  throw new Error("planner-task.title must be a non-empty string");
+}
+if (typeof plannerTask.percentComplete !== "number" || plannerTask.percentComplete < 0 || plannerTask.percentComplete > 100) {
+  throw new Error("planner-task.percentComplete must be a number between 0 and 100");
+}
+if (typeof plannerTask.planId !== "string" || plannerTask.planId.length < 1) {
+  throw new Error("planner-task.planId must be a non-empty string");
 }
 
 requireODataContext(calendar, "calendar-list");
