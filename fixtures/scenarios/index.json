@@ -20,5 +20,9 @@
   "todo-sync": [
     "user-profile",
     "todo-task-list"
+  ],
+  "planner-get": [
+    "user-profile",
+    "planner-task"
   ]
 }
