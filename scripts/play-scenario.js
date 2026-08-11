@@ -34,6 +34,11 @@ function playScenario(packName) {
   }));
 }
 
+
+function listPackNames() {
+  return Object.keys(loadScenarioIndex()).sort();
+}
+
 function selfTest() {
   const index = loadScenarioIndex();
   const requiredPack = "planner-get";
@@ -61,8 +66,12 @@ if (require.main === module) {
   const arg = process.argv[2];
   if (arg === "--selftest") {
     selfTest();
+  } else if (arg === "--list") {
+    for (const name of listPackNames()) {
+      console.log(name);
+    }
   } else if (!arg) {
-    console.error("usage: node scripts/play-scenario.js <pack-name|--selftest>");
+    console.error("usage: node scripts/play-scenario.js <pack-name|--list|--selftest>");
     process.exit(1);
   } else {
     const steps = playScenario(arg);
@@ -71,4 +80,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { playScenario, loadScenarioIndex };
+module.exports = { playScenario, loadScenarioIndex, listPackNames };

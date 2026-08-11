@@ -14,7 +14,7 @@ Load a fixture as a deterministic HTTP-style response: `node scripts/fixture-fet
 
 ## Scenario packs
 
-Named playback sequences live in `fixtures/scenarios/index.json`. Each pack lists fixture names in call order (for example `mail-sync`, `calendar-delta`, `teams-chat`, `drive-get`). Run `npm test` to verify every referenced fixture exists.
+Named playback sequences live in `fixtures/scenarios/index.json`. Each pack lists fixture names in call order (for example `mail-sync`, `calendar-delta`, `teams-chat`, `drive-get`). Run `npm test` to verify every referenced fixture exists. List pack names with `node scripts/play-scenario.js --list`.
 
 ## Fixtures
 
