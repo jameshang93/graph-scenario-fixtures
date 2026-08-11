@@ -21,6 +21,7 @@ Named playback sequences live in `fixtures/scenarios/index.json`. Each pack list
 - `fixtures/user-profile.json` — signed-in user profile from `/me`
 - `fixtures/contact.json` — Outlook contact with emailAddresses
 - `fixtures/planner-task.json` — Planner task with percentComplete and planId
+- `fixtures/onenote-page.json` — OneNote page with contentUrl and parentSection
 - `fixtures/calendar-list.json` — calendar list page
 - `fixtures/mail-page.json` — mail page with `@odata.nextLink`
 - `fixtures/delta-calendar.json` — delta sync with `@removed`

@@ -1,0 +1,25 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/onenote/pages/$entity",
+  "id": "1-a1b2c3d4-e5f6-7890-abcd-ef1234567890!1-section-id",
+  "self": "https://graph.microsoft.com/v1.0/me/onenote/pages/1-a1b2c3d4-e5f6-7890-abcd-ef1234567890!1-section-id",
+  "createdDateTime": "2024-03-12T10:15:00Z",
+  "title": "Sprint planning notes",
+  "createdByAppId": "2fab7878-bd09-4bf9-9a54-b8d4c4a8b2c1",
+  "contentUrl": "https://graph.microsoft.com/v1.0/me/onenote/pages/1-a1b2c3d4-e5f6-7890-abcd-ef1234567890!1-section-id/content",
+  "lastModifiedDateTime": "2024-03-14T16:40:00Z",
+  "level": 0,
+  "order": 100,
+  "links": {
+    "oneNoteClientUrl": {
+      "href": "onenote:https://contoso-my.sharepoint.com/personal/demo/Documents/Notebooks/Work/Sprint%20planning%20notes"
+    },
+    "oneNoteWebUrl": {
+      "href": "https://contoso-my.sharepoint.com/personal/demo/_layouts/15/Doc.aspx?sourcedoc=%7Ba1b2c3d4%7D"
+    }
+  },
+  "parentSection": {
+    "id": "1-section-id",
+    "displayName": "Work",
+    "self": "https://graph.microsoft.com/v1.0/me/onenote/sections/1-section-id"
+  }
+}
