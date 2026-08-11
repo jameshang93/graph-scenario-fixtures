@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "onenote-page",
+  "type": "object",
+  "required": ["@odata.context", "id", "title", "contentUrl", "links", "parentSection"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "contentUrl": { "type": "string" },
+    "links": {
+      "type": "object",
+      "required": ["oneNoteClientUrl", "oneNoteWebUrl"],
+      "properties": {
+        "oneNoteClientUrl": {
+          "type": "object",
+          "required": ["href"],
+          "properties": {
+            "href": { "type": "string" }
+          }
+        },
+        "oneNoteWebUrl": {
+          "type": "object",
+          "required": ["href"],
+          "properties": {
+            "href": { "type": "string" }
+          }
+        }
+      }
+    },
+    "parentSection": {
+      "type": "object",
+      "required": ["id", "displayName"],
+      "properties": {
+        "id": { "type": "string" },
+        "displayName": { "type": "string" }
+      }
+    }
+  }
+}

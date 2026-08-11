@@ -18,6 +18,7 @@ const userProfile = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "user
 const todoTaskList = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "todo-task-list.json"), "utf8"));
 const contact = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "contact.json"), "utf8"));
 const plannerTask = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "planner-task.json"), "utf8"));
+const onenotePage = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "onenote-page.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -219,7 +220,8 @@ const schemaChecks = [
   ["teams-chat-message", teamsChat],
   ["user-profile", userProfile],
   ["todo-task-list", todoTaskList],
-  ["mail-page", mail]
+  ["mail-page", mail],
+  ["onenote-page", onenotePage]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
