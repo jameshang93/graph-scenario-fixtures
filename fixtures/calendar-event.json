@@ -1,0 +1,59 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/events/$entity",
+  "id": "AAMkAGI2TG93AAAEvent001=",
+  "createdDateTime": "2024-01-10T09:00:00.0000000Z",
+  "lastModifiedDateTime": "2024-01-12T14:30:00.0000000Z",
+  "changeKey": "DwAAABYAAABqZ1calendarEvent001",
+  "categories": [
+    "Work"
+  ],
+  "originalStartTimeZone": "Pacific Standard Time",
+  "originalEndTimeZone": "Pacific Standard Time",
+  "reminderMinutesBeforeStart": 15,
+  "isReminderOn": true,
+  "hasAttachments": false,
+  "subject": "Weekly Graph sync review",
+  "bodyPreview": "Review calendar fixture coverage for Graph scenario packs.",
+  "importance": "normal",
+  "sensitivity": "normal",
+  "isAllDay": false,
+  "isCancelled": false,
+  "isOrganizer": true,
+  "responseRequested": true,
+  "showAs": "busy",
+  "type": "singleInstance",
+  "webLink": "https://outlook.office365.com/owa/?itemid=AAMkAGI2TG93AAAEvent001%3D&exvsurl=1&path=/calendar/item",
+  "onlineMeetingUrl": null,
+  "isOnlineMeeting": false,
+  "allowNewTimeProposals": true,
+  "isDraft": false,
+  "hideAttendees": false,
+  "responseStatus": {
+    "response": "organizer",
+    "time": "0001-01-01T00:00:00Z"
+  },
+  "body": {
+    "contentType": "html",
+    "content": "<html><body>Review calendar fixture coverage for Graph scenario packs.</body></html>"
+  },
+  "start": {
+    "dateTime": "2024-01-22T16:00:00.0000000",
+    "timeZone": "Pacific Standard Time"
+  },
+  "end": {
+    "dateTime": "2024-01-22T17:00:00.0000000",
+    "timeZone": "Pacific Standard Time"
+  },
+  "location": {
+    "displayName": "Building 18 / 2W100",
+    "locationType": "default",
+    "uniqueId": "Building 18 / 2W100",
+    "uniqueIdType": "private"
+  },
+  "organizer": {
+    "emailAddress": {
+      "name": "Alex Morgan",
+      "address": "alex.morgan@contoso.com"
+    }
+  }
+}
