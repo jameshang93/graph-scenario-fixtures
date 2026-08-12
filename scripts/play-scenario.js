@@ -39,6 +39,18 @@ function listPackNames() {
   return Object.keys(loadScenarioIndex()).sort();
 }
 
+function showPackFixtures(packName) {
+  const index = loadScenarioIndex();
+  if (!(packName in index)) {
+    throw new Error(`unknown scenario pack: ${packName}`);
+  }
+  const fixtureNames = index[packName];
+  if (!Array.isArray(fixtureNames) || fixtureNames.length < 1) {
+    throw new Error(`scenario pack ${packName} must list at least one fixture`);
+  }
+  return fixtureNames;
+}
+
 function selfTest() {
   const index = loadScenarioIndex();
   const requiredPack = "planner-get";
@@ -70,8 +82,23 @@ if (require.main === module) {
     for (const name of listPackNames()) {
       console.log(name);
     }
+  } else if (arg === "--show") {
+    const packName = process.argv[3];
+    if (!packName) {
+      console.error("usage: node scripts/play-scenario.js --show <pack-name>");
+      process.exit(1);
+    }
+    try {
+      const names = showPackFixtures(packName);
+      for (const name of names) {
+        console.log(name);
+      }
+    } catch (err) {
+      console.error(err.message);
+      process.exit(1);
+    }
   } else if (!arg) {
-    console.error("usage: node scripts/play-scenario.js <pack-name|--list|--selftest>");
+    console.error("usage: node scripts/play-scenario.js <pack-name|--list|--show|--selftest>");
     process.exit(1);
   } else {
     const steps = playScenario(arg);
@@ -80,4 +107,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { playScenario, loadScenarioIndex, listPackNames };
+module.exports = { playScenario, loadScenarioIndex, listPackNames, showPackFixtures };

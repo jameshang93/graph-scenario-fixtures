@@ -81,6 +81,12 @@
         "onenote",
         "pages"
       ]
+    },
+    {
+      "file": "calendar-event.json",
+      "tags": [
+        "calendar"
+      ]
     }
   ]
 }

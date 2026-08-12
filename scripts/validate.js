@@ -19,6 +19,7 @@ const todoTaskList = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "tod
 const contact = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "contact.json"), "utf8"));
 const plannerTask = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "planner-task.json"), "utf8"));
 const onenotePage = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "onenote-page.json"), "utf8"));
+const calendarEvent = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "calendar-event.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -65,6 +66,34 @@ if (typeof plannerTask.percentComplete !== "number" || plannerTask.percentComple
 }
 if (typeof plannerTask.planId !== "string" || plannerTask.planId.length < 1) {
   throw new Error("planner-task.planId must be a non-empty string");
+}
+
+requireODataContext(calendarEvent, "calendar-event");
+requireFields(calendarEvent, ["id", "subject", "start", "end", "organizer"], "calendar-event");
+if (typeof calendarEvent.id !== "string" || calendarEvent.id.length < 1) {
+  throw new Error("calendar-event.id must be a non-empty string");
+}
+if (typeof calendarEvent.subject !== "string" || calendarEvent.subject.length < 1) {
+  throw new Error("calendar-event.subject must be a non-empty string");
+}
+requireFields(calendarEvent.start, ["dateTime", "timeZone"], "calendar-event.start");
+if (typeof calendarEvent.start.dateTime !== "string" || calendarEvent.start.dateTime.length < 1) {
+  throw new Error("calendar-event.start.dateTime must be a non-empty string");
+}
+if (typeof calendarEvent.start.timeZone !== "string" || calendarEvent.start.timeZone.length < 1) {
+  throw new Error("calendar-event.start.timeZone must be a non-empty string");
+}
+requireFields(calendarEvent.end, ["dateTime", "timeZone"], "calendar-event.end");
+if (typeof calendarEvent.end.dateTime !== "string" || calendarEvent.end.dateTime.length < 1) {
+  throw new Error("calendar-event.end.dateTime must be a non-empty string");
+}
+if (typeof calendarEvent.end.timeZone !== "string" || calendarEvent.end.timeZone.length < 1) {
+  throw new Error("calendar-event.end.timeZone must be a non-empty string");
+}
+requireFields(calendarEvent.organizer, ["emailAddress"], "calendar-event.organizer");
+requireFields(calendarEvent.organizer.emailAddress, ["address"], "calendar-event.organizer.emailAddress");
+if (typeof calendarEvent.organizer.emailAddress.address !== "string" || !calendarEvent.organizer.emailAddress.address.includes("@")) {
+  throw new Error("calendar-event.organizer.emailAddress.address must look like an email address");
 }
 
 requireODataContext(calendar, "calendar-list");
