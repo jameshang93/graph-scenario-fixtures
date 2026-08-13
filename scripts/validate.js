@@ -250,7 +250,8 @@ const schemaChecks = [
   ["user-profile", userProfile],
   ["todo-task-list", todoTaskList],
   ["mail-page", mail],
-  ["onenote-page", onenotePage]
+  ["onenote-page", onenotePage],
+  ["calendar-event", calendarEvent]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
