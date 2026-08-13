@@ -24,5 +24,9 @@
   "planner-get": [
     "user-profile",
     "planner-task"
+  ],
+  "calendar-event-get": [
+    "user-profile",
+    "calendar-event"
   ]
 }

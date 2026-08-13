@@ -87,6 +87,12 @@
       "tags": [
         "calendar"
       ]
+    },
+    {
+      "file": "mail-message.json",
+      "tags": [
+        "mail"
+      ]
     }
   ]
 }

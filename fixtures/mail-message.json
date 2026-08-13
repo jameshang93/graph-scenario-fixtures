@@ -1,0 +1,47 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user')/messages/$entity",
+  "id": "AAMkAGI2TG93AAAMailMsg001=",
+  "createdDateTime": "2024-01-15T09:55:00Z",
+  "lastModifiedDateTime": "2024-01-15T10:00:00Z",
+  "changeKey": "CQAAABYAAABqZ1mailMessage001",
+  "categories": [],
+  "receivedDateTime": "2024-01-15T10:00:00Z",
+  "sentDateTime": "2024-01-15T09:59:00Z",
+  "hasAttachments": false,
+  "internetMessageId": "<msg001@contoso.com>",
+  "subject": "Project update",
+  "bodyPreview": "Here is the weekly status...",
+  "importance": "normal",
+  "parentFolderId": "AQMkAGI2AAAA",
+  "conversationId": "AAQkAGI2Conversation001=",
+  "isDeliveryReceiptRequested": false,
+  "isReadReceiptRequested": false,
+  "isRead": true,
+  "isDraft": false,
+  "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGI2TG93AAAMailMsg001%3D&exvsurl=1&viewmodel=ReadMessageItem",
+  "inferenceClassification": "focused",
+  "body": {
+    "contentType": "html",
+    "content": "<html><body>Here is the weekly status...</body></html>"
+  },
+  "from": {
+    "emailAddress": {
+      "name": "Alex",
+      "address": "alex@contoso.com"
+    }
+  },
+  "sender": {
+    "emailAddress": {
+      "name": "Alex",
+      "address": "alex@contoso.com"
+    }
+  },
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "name": "Alex Morgan",
+        "address": "alex.morgan@contoso.com"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "calendar-event",
+  "type": "object",
+  "required": ["@odata.context", "id", "subject", "start", "end", "organizer"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "subject": { "type": "string" },
+    "start": {
+      "type": "object",
+      "required": ["dateTime", "timeZone"],
+      "properties": {
+        "dateTime": { "type": "string" },
+        "timeZone": { "type": "string" }
+      }
+    },
+    "end": {
+      "type": "object",
+      "required": ["dateTime", "timeZone"],
+      "properties": {
+        "dateTime": { "type": "string" },
+        "timeZone": { "type": "string" }
+      }
+    },
+    "organizer": {
+      "type": "object",
+      "required": ["emailAddress"],
+      "properties": {
+        "emailAddress": {
+          "type": "object",
+          "required": ["address"],
+          "properties": {
+            "name": { "type": "string" },
+            "address": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
