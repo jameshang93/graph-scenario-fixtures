@@ -20,6 +20,7 @@ const contact = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "contact.
 const plannerTask = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "planner-task.json"), "utf8"));
 const onenotePage = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "onenote-page.json"), "utf8"));
 const calendarEvent = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "calendar-event.json"), "utf8"));
+const mailMessage = JSON.parse(fs.readFileSync(path.join(root, "fixtures", "mail-message.json"), "utf8"));
 
 function requireFields(obj, fields, label) {
   for (const field of fields) {
@@ -94,6 +95,21 @@ requireFields(calendarEvent.organizer, ["emailAddress"], "calendar-event.organiz
 requireFields(calendarEvent.organizer.emailAddress, ["address"], "calendar-event.organizer.emailAddress");
 if (typeof calendarEvent.organizer.emailAddress.address !== "string" || !calendarEvent.organizer.emailAddress.address.includes("@")) {
   throw new Error("calendar-event.organizer.emailAddress.address must look like an email address");
+}
+
+
+requireODataContext(mailMessage, "mail-message");
+requireFields(mailMessage, ["id", "subject", "from"], "mail-message");
+if (typeof mailMessage.id !== "string" || mailMessage.id.length < 1) {
+  throw new Error("mail-message.id must be a non-empty string");
+}
+if (typeof mailMessage.subject !== "string" || mailMessage.subject.length < 1) {
+  throw new Error("mail-message.subject must be a non-empty string");
+}
+requireFields(mailMessage.from, ["emailAddress"], "mail-message.from");
+requireFields(mailMessage.from.emailAddress, ["address"], "mail-message.from.emailAddress");
+if (typeof mailMessage.from.emailAddress.address !== "string" || !mailMessage.from.emailAddress.address.includes("@")) {
+  throw new Error("mail-message.from.emailAddress.address must look like an email address");
 }
 
 requireODataContext(calendar, "calendar-list");
