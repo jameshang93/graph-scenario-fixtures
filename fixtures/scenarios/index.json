@@ -28,5 +28,9 @@
   "calendar-event-get": [
     "user-profile",
     "calendar-event"
+  ],
+  "mail-message-get": [
+    "user-profile",
+    "mail-message"
   ]
 }
