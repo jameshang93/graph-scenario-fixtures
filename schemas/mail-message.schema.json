@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "mail-message",
+  "type": "object",
+  "required": ["@odata.context", "id", "subject", "from"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "subject": { "type": "string" },
+    "from": {
+      "type": "object",
+      "required": ["emailAddress"],
+      "properties": {
+        "emailAddress": {
+          "type": "object",
+          "required": ["address"],
+          "properties": {
+            "name": { "type": "string" },
+            "address": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
