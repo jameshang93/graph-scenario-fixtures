@@ -268,7 +268,8 @@ const schemaChecks = [
   ["mail-page", mail],
   ["onenote-page", onenotePage],
   ["calendar-event", calendarEvent],
-  ["mail-message", mailMessage]
+  ["mail-message", mailMessage],
+  ["contact", contact]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
