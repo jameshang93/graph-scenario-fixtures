@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "contact",
+  "type": "object",
+  "required": ["@odata.context", "id", "displayName", "givenName", "surname", "emailAddresses"],
+  "properties": {
+    "@odata.context": { "type": "string" },
+    "id": { "type": "string" },
+    "displayName": { "type": "string" },
+    "givenName": { "type": "string" },
+    "surname": { "type": "string" },
+    "emailAddresses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["address"],
+        "properties": {
+          "name": { "type": "string" },
+          "address": { "type": "string" }
+        }
+      }
+    }
+  }
+}
