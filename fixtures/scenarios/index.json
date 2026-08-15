@@ -32,5 +32,9 @@
   "mail-message-get": [
     "user-profile",
     "mail-message"
+  ],
+  "contact-get": [
+    "user-profile",
+    "contact"
   ]
 }
