@@ -36,5 +36,9 @@
   "contact-get": [
     "user-profile",
     "contact"
+  ],
+  "onenote-get": [
+    "user-profile",
+    "onenote-page"
   ]
 }
