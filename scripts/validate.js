@@ -269,7 +269,8 @@ const schemaChecks = [
   ["onenote-page", onenotePage],
   ["calendar-event", calendarEvent],
   ["mail-message", mailMessage],
-  ["contact", contact]
+  ["contact", contact],
+  ["planner-task", plannerTask]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
