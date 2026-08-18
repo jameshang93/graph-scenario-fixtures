@@ -40,5 +40,9 @@
   "onenote-get": [
     "user-profile",
     "onenote-page"
+  ],
+  "calendar-list-get": [
+    "user-profile",
+    "calendar-list"
   ]
 }
