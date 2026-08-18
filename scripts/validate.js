@@ -270,7 +270,8 @@ const schemaChecks = [
   ["calendar-event", calendarEvent],
   ["mail-message", mailMessage],
   ["contact", contact],
-  ["planner-task", plannerTask]
+  ["planner-task", plannerTask],
+  ["calendar-list", calendar]
 ];
 for (const [name, fixture] of schemaChecks) {
   const schema = loadSchema(root, name);
