@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "validate": "node scripts/validate.js",
-    "test": "npm run validate && node scripts/fixture-fetch.js --selftest && node scripts/play-scenario.js --selftest"
+    "test": "npm run validate && node scripts/fixture-fetch.js --selftest && node scripts/play-scenario.js --selftest",
+    "query:manifest": "node scripts/query-manifest.js"
   }
 }
