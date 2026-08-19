@@ -245,11 +245,16 @@ for (const [packName, fixtureNames] of Object.entries(scenarioIndex)) {
   if (!Array.isArray(fixtureNames) || fixtureNames.length < 1) {
     throw new Error(`scenario pack ${packName} must list at least one fixture`);
   }
+  const seenFixtures = new Set();
   for (const fixtureName of fixtureNames) {
     if (typeof fixtureName !== "string" || fixtureName.length < 1) {
       throw new Error(`scenario pack ${packName} has an invalid fixture name`);
     }
     const file = resolveFixtureFile(fixtureName);
+    if (seenFixtures.has(file)) {
+      throw new Error(`scenario pack ${packName} lists duplicate fixture: ${fixtureName}`);
+    }
+    seenFixtures.add(file);
     if (!manifestFiles.has(file)) {
       throw new Error(`scenario pack ${packName} references unknown fixture: ${fixtureName}`);
     }
