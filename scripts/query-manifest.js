@@ -26,8 +26,24 @@ function queryFixturesByTags(tags) {
   );
 }
 
+
+function listUniqueTags() {
+  const fixtures = loadManifest();
+  const tags = new Set();
+  for (const entry of fixtures) {
+    if (!Array.isArray(entry.tags)) {
+      continue;
+    }
+    for (const tag of entry.tags) {
+      tags.add(String(tag));
+    }
+  }
+  return Array.from(tags).sort();
+}
+
 function parseArgs(argv) {
   const tags = [];
+  let listTags = false;
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--tag") {
@@ -39,23 +55,34 @@ function parseArgs(argv) {
       i += 1;
       continue;
     }
+    if (arg === "--list-tags") {
+      listTags = true;
+      continue;
+    }
     if (arg === "--help") {
-      return { help: true, tags: [] };
+      return { help: true, listTags: false, tags: [] };
     }
     throw new Error(`unknown argument: ${arg}`);
   }
-  return { help: false, tags };
+  return { help: false, listTags, tags };
 }
 
 function printHelp() {
-  console.log("usage: node scripts/query-manifest.js [--tag <tag>]...");
+  console.log("usage: node scripts/query-manifest.js [--list-tags] [--tag <tag>]...");
   console.log("example: node scripts/query-manifest.js --tag calendar --tag user");
+  console.log("example: node scripts/query-manifest.js --list-tags");
 }
 
 function main() {
-  const { help, tags } = parseArgs(process.argv.slice(2));
+  const { help, listTags, tags } = parseArgs(process.argv.slice(2));
   if (help) {
     printHelp();
+    return;
+  }
+  if (listTags) {
+    for (const tag of listUniqueTags()) {
+      console.log(tag);
+    }
     return;
   }
   const results = queryFixturesByTags(tags);
@@ -72,4 +99,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { loadManifest, queryFixturesByTags, parseArgs };
+module.exports = { loadManifest, queryFixturesByTags, listUniqueTags, parseArgs };
