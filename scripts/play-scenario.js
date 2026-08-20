@@ -75,12 +75,20 @@ function selfTest() {
 }
 
 if (require.main === module) {
-  const arg = process.argv[2];
+  const args = process.argv.slice(2);
+  const arg = args[0];
+  const wantsJson = args.includes("--json");
   if (arg === "--selftest") {
     selfTest();
   } else if (arg === "--list") {
-    for (const name of listPackNames()) {
-      console.log(name);
+    const names = listPackNames();
+    if (wantsJson) {
+      process.stdout.write(JSON.stringify(names));
+      process.stdout.write("\n");
+    } else {
+      for (const name of names) {
+        console.log(name);
+      }
     }
   } else if (arg === "--show") {
     const packName = process.argv[3];
